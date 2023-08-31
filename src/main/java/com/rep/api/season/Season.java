@@ -28,8 +28,4 @@ public class Season {
 
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime endDate;
-
-    @ManyToOne
-    @JoinColumn(name = "user")
-    private User user;
 }

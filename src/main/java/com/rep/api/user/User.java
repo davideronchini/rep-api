@@ -1,9 +1,11 @@
 package com.rep.api.user;
 
-import com.rep.api.season.Season;
 import com.rep.api.token.Token;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -35,9 +37,6 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;
-
-    @OneToMany(mappedBy = "user")
-    private List<Season> seasons;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

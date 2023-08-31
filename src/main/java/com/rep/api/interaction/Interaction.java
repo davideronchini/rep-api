@@ -1,6 +1,7 @@
 package com.rep.api.interaction;
 
 import com.rep.api.emoji.Emoji;
+import com.rep.api.season.Season;
 import com.rep.api.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -42,5 +43,7 @@ public class Interaction {
     @JoinColumn(name = "emoji")
     private Emoji emoji;
 
-    private Long seasonId;
+    @ManyToOne
+    @JoinColumn(name = "season")
+    private Season season;
 }
