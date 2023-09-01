@@ -15,6 +15,6 @@ public interface InteractionRepository extends JpaRepository<Interaction, Long> 
             "AND i.date = :date")
     Optional<Interaction> findByParams(@Param("user1Id") Long user1Id, @Param("user2Id") Long user2Id, @Param("date") LocalDateTime date);
 
-    @Query(value = "SELECT i FROM Interaction i WHERE :userId IN (i.user1, i.user2)")
+    @Query(value = "SELECT i FROM Interaction i WHERE :userId IN (i.user1.id, i.user2.id)")
     Set<Interaction> findByUserId(@Param("userId") Long userId);
 }

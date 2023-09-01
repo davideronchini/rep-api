@@ -1,7 +1,5 @@
 package com.rep.api.season;
 
-import com.rep.api.interaction.Interaction;
-import com.rep.api.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @Builder
@@ -31,7 +27,4 @@ public class Season {
 
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime endDate;
-
-    @OneToMany(mappedBy = "season")
-    private Set<Interaction> interactions = new HashSet<>();
 }

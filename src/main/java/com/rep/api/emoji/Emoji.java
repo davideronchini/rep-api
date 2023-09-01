@@ -1,14 +1,10 @@
 package com.rep.api.emoji;
 
-import com.rep.api.interaction.Interaction;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @Builder
@@ -25,7 +21,4 @@ public class Emoji {
     private String emojiSymbol;
 
     private boolean isLocked;
-
-    @OneToMany(mappedBy = "emoji")
-    private Set<Interaction> interactions = new HashSet<>();
 }

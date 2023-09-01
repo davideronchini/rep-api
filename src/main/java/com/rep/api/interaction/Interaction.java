@@ -1,5 +1,7 @@
 package com.rep.api.interaction;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.rep.api.emoji.Emoji;
 import com.rep.api.season.Season;
 import com.rep.api.user.User;
@@ -32,18 +34,18 @@ public class Interaction {
     private boolean isSpecial = false;
 
     @ManyToOne
-    @JoinColumn(name = "user1")
+    @JoinColumn(name = "user1_id")
     private User user1;
 
     @ManyToOne
-    @JoinColumn(name = "user2")
+    @JoinColumn(name = "user2_id")
     private User user2;
 
     @ManyToOne
-    @JoinColumn(name = "emoji")
+    @JoinColumn(name = "emoji_id")
     private Emoji emoji;
 
     @ManyToOne
-    @JoinColumn(name = "season")
+    @JoinColumn(name = "season_id")
     private Season season;
 }
