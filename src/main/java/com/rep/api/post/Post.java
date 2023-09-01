@@ -1,13 +1,12 @@
-package com.rep.api.emoji;
+package com.rep.api.post;
 
-import com.rep.api.interaction.Interaction;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
@@ -15,17 +14,22 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "emojis")
-public class Emoji {
+@Table(name = "posts")
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String emojiSymbol;
+    private String text;
 
-    private boolean isLocked;
+    private int likes;
 
-    @OneToMany(mappedBy = "emoji")
-    private Set<Interaction> interactions = new HashSet<>();
+    private int views;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime date;
+
+    @OneToMany(mappedBy = "post")
+    private Set<PostTags> tags;
 }

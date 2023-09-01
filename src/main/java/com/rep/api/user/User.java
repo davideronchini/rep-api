@@ -1,5 +1,6 @@
 package com.rep.api.user;
 
+import com.rep.api.post.PostTags;
 import com.rep.api.token.Token;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -31,6 +33,9 @@ public class User implements UserDetails {
     private String password;
 
     private String tag;
+
+    @OneToMany(mappedBy = "user")
+    private Set<PostTags> tags;
 
     @Enumerated(EnumType.STRING)
     private Role role;
