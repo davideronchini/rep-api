@@ -10,11 +10,9 @@ import java.util.Set;
 
 public interface InteractionRepository extends JpaRepository<Interaction, Long> {
 
-    @Query("SELECT i FROM Interaction i " +
-            "WHERE (:user1Id IN (i.user1.id, i.user2.id) AND :user2Id IN (i.user1.id, i.user2.id)) " +
-            "AND i.date = :date")
+    @Query(value = "SELECT i FROM Interaction i WHERE (i.user1.id IN (:user1Id, :user2Id) AND i.user2.id IN (:user1Id, :user2Id) AND i.date = :date)")
     Optional<Interaction> findByParams(@Param("user1Id") Long user1Id, @Param("user2Id") Long user2Id, @Param("date") LocalDateTime date);
 
-    @Query(value = "SELECT i FROM Interaction i WHERE :userId IN (i.user1.id, i.user2.id)")
-    Set<Interaction> findByUserId(@Param("userId") Long userId);
+    @Query(value = "SELECT i FROM Interaction i WHERE (:userId IN (i.user1.id, i.user2.id))")
+    Set<Optional<Interaction>> findByOneUserId(@Param("userId") Long userId);
 }

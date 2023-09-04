@@ -25,7 +25,6 @@ public class Interaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime date;
 
