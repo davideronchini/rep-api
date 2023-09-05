@@ -1,5 +1,6 @@
-package com.rep.api.post;
+package com.rep.api.tag;
 
+import com.rep.api.post.Post;
 import com.rep.api.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,7 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Entity
 @Table(name = "post_tags")
-public class PostTags {
+public class PostTag {
 
     @EmbeddedId
     PostTagKey id;

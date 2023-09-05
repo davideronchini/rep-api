@@ -1,5 +1,7 @@
 package com.rep.api.post;
 
+import com.rep.api.reaction.PostReaction;
+import com.rep.api.tag.PostTag;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,5 +33,8 @@ public class Post {
     private LocalDateTime date;
 
     @OneToMany(mappedBy = "post")
-    private Set<PostTags> tags;
+    private Set<PostTag> tags;
+
+    @OneToMany(mappedBy = "post")
+    private Set<PostReaction> reactions;
 }
