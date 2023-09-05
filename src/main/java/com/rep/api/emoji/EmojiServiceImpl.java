@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class EmojiServiceImpl {
+public class EmojiServiceImpl implements EmojiService{
 
     private final EmojiRepository emojiRepository;
 }
