@@ -66,7 +66,7 @@ public class InteractionRepositoryTest {
         Season season = seasonRepository.findById(1L).orElse(null);
 
         // Save the interaction
-        interactionRepository.save(new Interaction(1L, LocalDateTime.parse("2023-07-28T14:30:00"), true, false, user1, user2, emoji, season));
+        interactionRepository.save(new Interaction(1L, 1L, 2L, 1L, 1L, user1, user2, emoji, season, true, false, LocalDateTime.parse("2023-07-28T14:30:00")));
     }
 
     @Test

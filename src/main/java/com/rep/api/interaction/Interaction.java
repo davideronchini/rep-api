@@ -1,7 +1,5 @@
 package com.rep.api.interaction;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.rep.api.emoji.Emoji;
 import com.rep.api.season.Season;
 import com.rep.api.user.User;
@@ -25,26 +23,38 @@ public class Interaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime date;
+    @Column(name = "user1_id")
+    private Long user1Id;
+
+    @Column(name = "user2_id")
+    private Long user2Id;
+
+    @Column(name = "emoji_id")
+    private Long emojiId;
+
+    @Column(name = "season_id")
+    private Long seasonId;
+
+    @ManyToOne
+    @JoinColumn(name = "user1_id", insertable = false, updatable = false)
+    private User user1;
+
+    @ManyToOne
+    @JoinColumn(name = "user2_id", insertable = false, updatable = false)
+    private User user2;
+
+    @ManyToOne
+    @JoinColumn(name = "emoji_id", insertable = false, updatable = false)
+    private Emoji emoji;
+
+    @ManyToOne
+    @JoinColumn(name = "season_id", insertable = false, updatable = false)
+    private Season season;
 
     private boolean isVisible = true;
 
     private boolean isSpecial = false;
 
-    @ManyToOne
-    @JoinColumn(name = "user1_id")
-    private User user1;
-
-    @ManyToOne
-    @JoinColumn(name = "user2_id")
-    private User user2;
-
-    @ManyToOne
-    @JoinColumn(name = "emoji_id")
-    private Emoji emoji;
-
-    @ManyToOne
-    @JoinColumn(name = "season_id")
-    private Season season;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime date;
 }

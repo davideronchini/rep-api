@@ -15,8 +15,8 @@ public class InteractionController {
     private final InteractionService interactionService;
 
     @PostMapping("/create")
-    public ResponseEntity<String> create(@RequestBody InteractionDTO interactionDTO) {
-        interactionService.createInteraction(interactionDTO);
+    public ResponseEntity<String> create(@RequestBody Interaction interaction) {
+        interactionService.save(interaction);
 
         return ResponseEntity.ok("Interaction created successfully");
     }

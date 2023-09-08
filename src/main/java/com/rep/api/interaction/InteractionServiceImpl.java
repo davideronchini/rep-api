@@ -18,27 +18,23 @@ public class InteractionServiceImpl implements InteractionService {
     private final SeasonRepository seasonRepository;
 
     @Override
-    public void createInteraction(InteractionDTO interactionDTO) {
+    public void save(Interaction interaction) {
         boolean interactionExists = interactionRepository.findByParams(
-                interactionDTO.getUser1Id(),
-                interactionDTO.getUser2Id(),
-                interactionDTO.getDate()
+                interaction.getUser1Id(),
+                interaction.getUser2Id(),
+                interaction.getDate()
         ).isPresent();
 
         if (!interactionExists) {
-            User user1 = userRepository.findById(interactionDTO.getUser1Id()).orElse(null);
-            User user2 = userRepository.findById(interactionDTO.getUser2Id()).orElse(null);
-            Emoji emoji = emojiRepository.findById(interactionDTO.getEmojiId()).orElse(null);
-            Season season = seasonRepository.findById(interactionDTO.getSeasonId()).orElse(null);
+            User user1 = userRepository.findById(interaction.getUser1Id()).orElse(null);
+            User user2 = userRepository.findById(interaction.getUser2Id()).orElse(null);
+            Emoji emoji = emojiRepository.findById(interaction.getEmojiId()).orElse(null);
+            Season season = seasonRepository.findById(interaction.getSeasonId()).orElse(null);
 
-            Interaction interaction = new Interaction();
             interaction.setUser1(user1);
             interaction.setUser2(user2);
             interaction.setEmoji(emoji);
             interaction.setSeason(season);
-            interaction.setVisible(interactionDTO.isVisible());
-            interaction.setSpecial(interactionDTO.isSpecial());
-            interaction.setDate(interactionDTO.getDate());
 
             interactionRepository.save(interaction);
         }
