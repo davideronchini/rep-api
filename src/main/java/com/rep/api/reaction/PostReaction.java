@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 public class PostReaction {
 
     @EmbeddedId
-    PostReactionKey id;
+    private PostReactionKey id;
 
     private String comment;
 
@@ -30,29 +30,32 @@ public class PostReaction {
 
     @ManyToOne
     @MapsId("userId")
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
     @ManyToOne
     @MapsId("postId")
-    @JoinColumn(name = "post_id")
+    @JoinColumn(name = "post_id", insertable = false, updatable = false)
     private Post post;
 
     @ManyToOne
     @MapsId("emojiId")
-    @JoinColumn(name = "emoji_id")
+    @JoinColumn(name = "emoji_id", insertable = false, updatable = false)
     private Emoji emoji;
 }
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Embeddable
 class PostReactionKey implements Serializable {
 
     @Column(name = "user_id")
-    Long userId;
+    private Long userId;
 
     @Column(name = "post_id")
-    Long postId;
+    private Long postId;
 
     @Column(name = "emoji_id")
-    Long emojiId;
+    private Long emojiId;
 }
