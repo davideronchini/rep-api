@@ -1,7 +1,5 @@
 package com.rep.api.friend;
 
-import com.rep.api.interaction.InteractionDTO;
-import com.rep.api.interaction.InteractionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
