@@ -19,25 +19,28 @@ import java.io.Serializable;
 public class PostTag {
 
     @EmbeddedId
-    PostTagKey id;
+    private PostTagKey id;
 
     @ManyToOne
     @MapsId("userId")
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
     @ManyToOne
     @MapsId("postId")
-    @JoinColumn(name = "post_id")
+    @JoinColumn(name = "post_id", insertable = false, updatable = false)
     private Post post;
 }
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Embeddable
 class PostTagKey implements Serializable {
 
     @Column(name = "user_id")
-    Long userId;
+    private Long userId;
 
     @Column(name = "post_id")
-    Long postId;
+    private Long postId;
 }
