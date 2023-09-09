@@ -1,6 +1,7 @@
 package com.rep.api.user;
 
 import com.rep.api.friend.Friend;
+import com.rep.api.medal.Medal;
 import com.rep.api.reaction.PostReaction;
 import com.rep.api.tag.PostTag;
 import com.rep.api.token.Token;
@@ -44,6 +45,9 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "creator")
     private Set<Friend> friends;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Medal> medals;
 
     @Enumerated(EnumType.STRING)
     private Role role;
