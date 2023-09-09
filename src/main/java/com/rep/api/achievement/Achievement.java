@@ -27,8 +27,6 @@ public class Achievement {
 
     private String description;
 
-    private boolean isCompleted;
-
     @Column(name = "emoji_id")
     private Long emojiId;
 
@@ -39,8 +37,8 @@ public class Achievement {
     @ManyToMany()
     @JoinTable(
             name = "users_achievements",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "achievement_id")
+            joinColumns = @JoinColumn(name = "achievement_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private Set<User> users;
 
