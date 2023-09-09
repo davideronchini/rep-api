@@ -1,5 +1,6 @@
 package com.rep.api.user;
 
+import com.rep.api.achievement.Achievement;
 import com.rep.api.friend.Friend;
 import com.rep.api.medal.Medal;
 import com.rep.api.reaction.PostReaction;
@@ -14,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -48,6 +50,9 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user")
     private Set<Medal> medals;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Achievement> achievements = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
     private Role role;
