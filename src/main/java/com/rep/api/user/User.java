@@ -4,6 +4,7 @@ import com.rep.api.achievement.Achievement;
 import com.rep.api.event.Event;
 import com.rep.api.friend.Friend;
 import com.rep.api.medal.Medal;
+import com.rep.api.mission.Mission;
 import com.rep.api.reaction.PostReaction;
 import com.rep.api.tag.PostTag;
 import com.rep.api.token.Token;
@@ -54,6 +55,9 @@ public class User implements UserDetails {
 
     @ManyToMany(mappedBy = "users")
     private Set<Achievement> achievements;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Mission> missions;
 
     @ManyToMany(mappedBy = "users")
     private Set<Event> events;
