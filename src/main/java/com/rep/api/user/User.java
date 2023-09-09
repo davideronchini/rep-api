@@ -1,6 +1,7 @@
 package com.rep.api.user;
 
 import com.rep.api.achievement.Achievement;
+import com.rep.api.event.Event;
 import com.rep.api.friend.Friend;
 import com.rep.api.medal.Medal;
 import com.rep.api.reaction.PostReaction;
@@ -52,7 +53,10 @@ public class User implements UserDetails {
     private Set<Medal> medals;
 
     @ManyToMany(mappedBy = "users")
-    private Set<Achievement> achievements = new HashSet<>();
+    private Set<Achievement> achievements;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Event> events;
 
     @Enumerated(EnumType.STRING)
     private Role role;
