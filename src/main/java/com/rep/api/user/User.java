@@ -1,6 +1,7 @@
 package com.rep.api.user;
 
 import com.rep.api.achievement.Achievement;
+import com.rep.api.customization.Customization;
 import com.rep.api.event.Event;
 import com.rep.api.friend.Friend;
 import com.rep.api.medal.Medal;
@@ -61,6 +62,9 @@ public class User implements UserDetails {
 
     @ManyToMany(mappedBy = "users")
     private Set<Event> events;
+
+    @OneToOne(mappedBy = "user")
+    private Customization customization;
 
     @Enumerated(EnumType.STRING)
     private Role role;
