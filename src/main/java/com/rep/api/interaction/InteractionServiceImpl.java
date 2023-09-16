@@ -9,6 +9,10 @@ import com.rep.api.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
 @Service
 @RequiredArgsConstructor
 public class InteractionServiceImpl implements InteractionService {
@@ -16,6 +20,16 @@ public class InteractionServiceImpl implements InteractionService {
     private final InteractionRepository interactionRepository;
     private final EmojiRepository emojiRepository;
     private final SeasonRepository seasonRepository;
+
+    @Override
+    public List<Interaction> findAll() {
+        return interactionRepository.findAll();
+    }
+
+    @Override
+    public Set<Optional<Interaction>> findAllVisible() {
+        return interactionRepository.findAllVisible();
+    }
 
     @Override
     public void save(Interaction interaction) {

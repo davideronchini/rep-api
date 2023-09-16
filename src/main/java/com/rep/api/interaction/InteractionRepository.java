@@ -15,4 +15,7 @@ public interface InteractionRepository extends JpaRepository<Interaction, Long> 
 
     @Query(value = "SELECT i FROM Interaction i WHERE (:userId IN (i.user1Id, i.user2Id))")
     Set<Optional<Interaction>> findByOneUserId(@Param("userId") Long userId);
+
+    @Query(value = "SELECT i FROM Interaction i WHERE i.isVisible")
+    Set<Optional<Interaction>> findAllVisible();
 }
