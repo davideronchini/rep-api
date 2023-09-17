@@ -15,7 +15,7 @@ public class InteractionController {
 
     private final InteractionService interactionService;
 
-    @GetMapping("/")
+    @GetMapping("/all")
     public ResponseEntity<List<Interaction>> findAll() {
         return ResponseEntity.ok(interactionService.findAll());
     }

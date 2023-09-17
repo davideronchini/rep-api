@@ -13,7 +13,7 @@ public class SeasonController {
 
     private final SeasonService seasonService;
 
-    @GetMapping("/")
+    @GetMapping("/all")
     public ResponseEntity<List<Season>> findAll() {
         return ResponseEntity.ok(seasonService.findAll());
     }
