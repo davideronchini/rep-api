@@ -3,7 +3,7 @@ package com.rep.api.user;
 import com.rep.api.achievement.Achievement;
 import com.rep.api.customization.Customization;
 import com.rep.api.event.Event;
-import com.rep.api.friend.Friend;
+import com.rep.api.friendship.Friendship;
 import com.rep.api.medal.Medal;
 import com.rep.api.mission.Mission;
 import com.rep.api.reaction.PostReaction;
@@ -18,7 +18,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -49,7 +48,10 @@ public class User implements UserDetails {
     private Set<PostReaction> reactions;
 
     @OneToMany(mappedBy = "creator")
-    private Set<Friend> friends;
+    private Set<Friendship> outgoingFriendships;
+
+    @OneToMany(mappedBy = "receiver")
+    private Set<Friendship> incomingFriendships;
 
     @OneToMany(mappedBy = "user")
     private Set<Medal> medals;

@@ -1,4 +1,4 @@
-package com.rep.api.friend;
+package com.rep.api.friendship;
 
 import com.rep.api.user.User;
 import jakarta.persistence.*;
@@ -15,11 +15,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "friends")
-public class Friend {
+@Table(name = "friendships")
+public class Friendship {
 
     @EmbeddedId
-    private FriendKey id;
+    private FriendshipKey id;
 
     @ManyToOne
     @MapsId("creatorId")
@@ -31,7 +31,7 @@ public class Friend {
     @JoinColumn(name = "receiver_id", insertable = false, updatable = false)
     private User receiver;
 
-    private boolean isActive;
+    private boolean isAccepted = false;
 
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime date;
@@ -41,7 +41,7 @@ public class Friend {
 @AllArgsConstructor
 @NoArgsConstructor
 @Embeddable
-class FriendKey implements Serializable {
+class FriendshipKey implements Serializable {
 
     @Column(name = "creator_id")
     private Long creatorId;
