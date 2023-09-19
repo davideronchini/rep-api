@@ -1,5 +1,6 @@
 package com.rep.api.post;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.rep.api.reaction.PostReaction;
 import com.rep.api.tag.PostTag;
 import jakarta.persistence.*;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@JsonIgnoreProperties({"tags", "reactions"})
 @Data
 @Builder
 @NoArgsConstructor
@@ -25,9 +27,9 @@ public class Post {
 
     private String text;
 
-    private int likes;
+    private int likes = 0;
 
-    private int views;
+    private int views = 0;
 
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime date;

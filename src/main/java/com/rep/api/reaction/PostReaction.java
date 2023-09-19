@@ -1,5 +1,6 @@
 package com.rep.api.reaction;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.rep.api.emoji.Emoji;
 import com.rep.api.post.Post;
 import com.rep.api.user.User;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@JsonIgnoreProperties({"user", "post", "emoji"})
 @Data
 @Builder
 @NoArgsConstructor
