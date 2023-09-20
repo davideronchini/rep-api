@@ -20,7 +20,7 @@ public class PostReactionController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<Set<PostReaction>> findAll(@RequestParam Long postId) {
+    public ResponseEntity<Set<PostReaction>> findAllByPostId(@RequestParam Long postId) {
         return ResponseEntity.ok(postReactionService.findAllByPostId(postId));
     }
 
