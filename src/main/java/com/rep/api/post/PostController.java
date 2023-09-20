@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/rep-api/v1/posts")
@@ -17,6 +18,11 @@ public class PostController {
     @GetMapping("/all")
     public ResponseEntity<List<Post>> findAll() {
         return ResponseEntity.ok(postService.findAll());
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<Set<Post>> findByCreatorId(@RequestParam Long creatorId) {
+        return ResponseEntity.ok(postService.findByCreatorId(creatorId));
     }
 
     @PostMapping("/create")

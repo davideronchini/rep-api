@@ -3,6 +3,7 @@ package com.rep.api.post;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.rep.api.reaction.PostReaction;
 import com.rep.api.tag.PostTag;
+import com.rep.api.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@JsonIgnoreProperties({"tags", "reactions"})
+@JsonIgnoreProperties({"tags", "reactions", "creator"})
 @Data
 @Builder
 @NoArgsConstructor
@@ -30,6 +31,13 @@ public class Post {
     private int likes = 0;
 
     private int views = 0;
+
+    @Column(name = "creator_id")
+    private Long creatorId;
+
+    @ManyToOne
+    @JoinColumn(name = "creator_id", insertable = false, updatable = false)
+    private User creator;
 
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime date;

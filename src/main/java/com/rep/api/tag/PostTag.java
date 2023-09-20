@@ -1,5 +1,6 @@
 package com.rep.api.tag;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.rep.api.post.Post;
 import com.rep.api.user.User;
 import jakarta.persistence.*;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+@JsonIgnoreProperties({"user", "post"})
 @Data
 @Builder
 @NoArgsConstructor

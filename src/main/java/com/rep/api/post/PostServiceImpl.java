@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -14,6 +15,11 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> findAll() {
         return postRepository.findAll();
+    }
+
+    @Override
+    public Set<Post> findByCreatorId(Long creatorId) {
+        return postRepository.findByCreatorId(creatorId);
     }
 
     @Override
