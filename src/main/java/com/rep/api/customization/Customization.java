@@ -1,6 +1,7 @@
 package com.rep.api.customization;
 
 import com.rep.api.user.User;
+import com.rep.api.widget_type.WidgetType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.rep.api.customization;
+package com.rep.api.widget_type;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

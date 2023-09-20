@@ -2,6 +2,8 @@ package com.rep.api.customization;
 
 import com.rep.api.user.User;
 import com.rep.api.user.UserRepository;
+import com.rep.api.widget_type.WidgetType;
+import com.rep.api.widget_type.WidgetTypeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
