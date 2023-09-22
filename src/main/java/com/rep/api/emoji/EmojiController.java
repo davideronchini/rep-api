@@ -31,11 +31,11 @@ public class EmojiController {
 
         Map<String, Object> data = new HashMap<>();
         List<Map<String, Object>> nodes = new ArrayList<>();
-        nodes.add(Map.of("id", 0, "emoji", "", "locked", false));
-        nodes.add(Map.of("id", 1, "emoji", "\uD83D\uDE04", "locked", true));
-        nodes.add(Map.of("id", 2, "emoji", "\uD83D\uDE06", "locked", false));
-        nodes.add(Map.of("id", 3, "emoji", "\uD83D\uDE02", "locked", false));
-        nodes.add(Map.of("id", 4, "emoji", "\uD83D\uDE0D", "locked", false));
+        nodes.add(Map.of("id", 0, "name", "unlocks available", "emojiCode", ""));
+        nodes.add(Map.of("id", 1, "name", "smiling face with heart-eyes", "emojiCode", "\uD83D\uDE0D"));
+        nodes.add(Map.of("id", 2, "name", "star-struck", "emojiCode", "\uD83E\uDD29"));
+        nodes.add(Map.of("id", 3, "name", "face with tears of joy", "emojiCode", "\uD83D\uDE02"));
+        nodes.add(Map.of("id", 4, "name", "beaming face with smiling eyes", "emojiCode", "\uD83D\uDE01"));
         data.put("nodes", nodes);
 
         List<Map<String, Object>> edges = new ArrayList<>();
@@ -53,5 +53,17 @@ public class EmojiController {
         emojiService.save(emoji);
 
         return ResponseEntity.ok("Emoji created successfully");
+    }
+
+    @PostMapping("/unlock-emoji")
+    public ResponseEntity<String> addUserToEmoji(@RequestParam Long userId, @RequestParam String emojiCode) {
+        emojiService.addUserToEmoji(userId, emojiCode);
+
+        return ResponseEntity.ok("The user has successfully unlocked the emoji");
+    }
+
+    @GetMapping("/unlocked-emoji")
+    public ResponseEntity<Set<Emoji>> findUnlockedEmojiByUserId(@RequestParam Long userId) {
+        return ResponseEntity.ok(emojiService.findUnlockedEmojiByUserId(userId));
     }
 }

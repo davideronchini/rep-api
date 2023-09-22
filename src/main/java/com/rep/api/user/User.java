@@ -2,6 +2,7 @@ package com.rep.api.user;
 
 import com.rep.api.achievement.Achievement;
 import com.rep.api.customization.Customization;
+import com.rep.api.emoji.Emoji;
 import com.rep.api.event.Event;
 import com.rep.api.friendship.Friendship;
 import com.rep.api.medal.Medal;
@@ -52,6 +53,9 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "receiver")
     private Set<Friendship> incomingFriendships;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Emoji> emojis;
 
     @OneToMany(mappedBy = "user")
     private Set<Medal> medals;
