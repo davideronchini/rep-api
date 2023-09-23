@@ -21,6 +21,13 @@ public class FriendshipController {
 
     private final UserRepository userRepository;
 
+    @PostMapping("/create")
+    public ResponseEntity<String> create(@RequestBody Friendship friendship) {
+        friendshipService.save(friendship);
+
+        return ResponseEntity.ok("Friend created successfully");
+    }
+
     @GetMapping("/map")
     public ResponseEntity<String> getMap(@RequestParam Long userId) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -43,6 +50,14 @@ public class FriendshipController {
             nodeMap.put("firstname", user.getFirstName());
             nodeMap.put("lastname", user.getLastName());
             nodeMap.put("email", user.getEmail());
+
+            // Convert image to Base64
+            byte[] imageBytes = user.getImage();
+            String base64Image = (imageBytes != null)
+                    ? Base64.getEncoder().encodeToString(imageBytes)
+                    : ""; // Provide a suitable default image placeholder
+            nodeMap.put("image", base64Image);
+
             nodeMap.put("tag", user.getTag());
         };
 
@@ -85,12 +100,5 @@ public class FriendshipController {
 
         // Return the response in JSON format
         return ResponseEntity.ok(objectMapper.writeValueAsString(data));
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<String> create(@RequestBody Friendship friendship) {
-        friendshipService.save(friendship);
-
-        return ResponseEntity.ok("Friend created successfully");
     }
 }

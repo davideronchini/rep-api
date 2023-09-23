@@ -1,4 +1,4 @@
-package com.rep.api.reaction;
+package com.rep.api.post.reaction;
 
 import com.rep.api.emoji.Emoji;
 import com.rep.api.emoji.EmojiRepository;

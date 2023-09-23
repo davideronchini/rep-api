@@ -1,4 +1,4 @@
-package com.rep.api.tag;
+package com.rep.api.post.tag;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.rep.api.post.Post;

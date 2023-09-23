@@ -1,4 +1,4 @@
-package com.rep.api.reaction;
+package com.rep.api.post.reaction;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

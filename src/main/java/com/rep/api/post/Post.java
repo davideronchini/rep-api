@@ -1,8 +1,8 @@
 package com.rep.api.post;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.rep.api.reaction.PostReaction;
-import com.rep.api.tag.PostTag;
+import com.rep.api.post.reaction.PostReaction;
+import com.rep.api.post.tag.PostTag;
 import com.rep.api.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

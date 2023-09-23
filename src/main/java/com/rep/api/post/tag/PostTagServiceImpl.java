@@ -1,4 +1,4 @@
-package com.rep.api.tag;
+package com.rep.api.post.tag;
 
 import com.rep.api.post.Post;
 import com.rep.api.post.PostRepository;
@@ -7,8 +7,7 @@ import com.rep.api.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +22,20 @@ public class PostTagServiceImpl implements PostTagService {
     @Override
     public List<PostTag> findAll() {
         return postTagRepository.findAll();
+    }
+
+    @Override
+    public Set<PostTag> findAllByUserId(Long userId) {
+        Set<PostTag> tags = new HashSet<>();
+
+        Set<Post> posts = postRepository.findByCreatorId(userId);
+        if (!posts.isEmpty()) {
+            posts.forEach(post -> tags.addAll(postTagRepository.findAllByPostId(post.getId())));
+
+            return tags;
+        }
+
+        return tags;
     }
 
     @Override

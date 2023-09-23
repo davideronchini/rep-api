@@ -1,4 +1,4 @@
-package com.rep.api.reaction;
+package com.rep.api.post.reaction;
 
 import com.rep.api.post.Post;
 import com.rep.api.user.User;

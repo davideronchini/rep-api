@@ -7,8 +7,8 @@ import com.rep.api.event.Event;
 import com.rep.api.friendship.Friendship;
 import com.rep.api.medal.Medal;
 import com.rep.api.mission.Mission;
-import com.rep.api.reaction.PostReaction;
-import com.rep.api.tag.PostTag;
+import com.rep.api.post.reaction.PostReaction;
+import com.rep.api.post.tag.PostTag;
 import com.rep.api.token.Token;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,9 +37,16 @@ public class User implements UserDetails {
     private String firstName;
 
     private String lastName;
+    @Column(unique = true)
     private String email;
     private String password;
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] image;
+
+    @Column(unique = true)
     private String tag;
 
     @OneToMany(mappedBy = "user")

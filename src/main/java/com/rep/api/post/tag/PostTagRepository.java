@@ -1,4 +1,4 @@
-package com.rep.api.tag;
+package com.rep.api.post.tag;
 
 import com.rep.api.post.Post;
 import com.rep.api.user.User;
