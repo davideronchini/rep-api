@@ -8,9 +8,13 @@ public interface EmojiService {
 
     List<Emoji> findAll();
 
+    Optional<Emoji> findById(Long id);
+
     Set<Emoji> findUnlockedEmojiByUserId(Long userId);
 
     Set<Optional<Emoji>> findByPhaseAndSeasonId(int phase, Long seasonId);
+
+    List<Emoji> findRandomEmojisByPhaseAndSeasonId(int phase, Long seasonId, int limit);
 
     void save(Emoji emoji);
 

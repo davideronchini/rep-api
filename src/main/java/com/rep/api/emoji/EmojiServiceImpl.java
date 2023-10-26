@@ -27,6 +27,11 @@ public class EmojiServiceImpl implements EmojiService {
     }
 
     @Override
+    public Optional<Emoji> findById(Long id) {
+        return emojiRepository.findById(id);
+    }
+
+    @Override
     public Set<Emoji> findUnlockedEmojiByUserId(Long userId) {
         return emojiRepository.findUnlockedEmojiByUserId(userId);
     }
@@ -34,6 +39,11 @@ public class EmojiServiceImpl implements EmojiService {
     @Override
     public Set<Optional<Emoji>> findByPhaseAndSeasonId(int phase, Long seasonId) {
         return emojiRepository.findByPhaseAndSeasonId(phase, seasonId);
+    }
+
+    @Override
+    public List<Emoji> findRandomEmojisByPhaseAndSeasonId(int phase, Long seasonId, int limit) {
+        return emojiRepository.findRandomEmojisByPhaseAndSeasonId(phase, seasonId, limit);
     }
 
     @Override
